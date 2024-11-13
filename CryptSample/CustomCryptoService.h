@@ -144,8 +144,6 @@ static const unsigned char FinalPermuteMap[64] =
 };
 
 
-
-
 ref class CustomCryptoService 
 {
 private:
@@ -165,21 +163,22 @@ public:
 	array<Byte>^ EncryptStringToBytesAes(String^ string);
 	String^ DecryptBytesToStringAes(array<Byte>^ bytes);
 
-	// System functions
+	// System functions032
 	void rc4_init(RC4_CONTEXT* a4i, const unsigned char* key, unsigned int keyLen);
 	void rc4_crypt(RC4_CONTEXT* a4i, unsigned char* inoutString, unsigned int length);
 	NTSTATUS
 	WINAPI SystemFunction032(U_STRING* data, const U_STRING* key);
 
-	// System functions
+	// System functions025
 	void Permute(unsigned char* dst, const unsigned char* src, const unsigned char* map, const int mapsize);
 	void Xor(unsigned char* dst, const unsigned char* a, const unsigned char* b, const int count);
 	void Sbox(unsigned char* dst, const unsigned char* src);
 	void KeyShiftRight(unsigned char* key, const int numbits);
 	unsigned char* CRYPT_DESunhash(unsigned char* dst, const unsigned char* key, const unsigned char* src);
-
 	NTSTATUS
 	WINAPI SystemFunction025(const BYTE* in, const BYTE* key, LPBYTE out);
+
+
 };
 
 

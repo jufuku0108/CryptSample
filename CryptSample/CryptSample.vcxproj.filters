@@ -21,9 +21,15 @@
     <ClCompile Include="CustomCryptoService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CustomHashService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CustomCryptoService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomHashService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

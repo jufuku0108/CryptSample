@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "CustomCryptoService.h"
-
+#include "CustomHashService.h"
 
 int main()
 {
@@ -28,7 +28,7 @@ int main()
 
     printf("---Using RC4---\n");
     unsigned char* input = (unsigned char*)"Hello encrypted world";
-    printf("Input tex t: %s\n", (char*)input);
+    printf("Input text: %s\n", (char*)input);
     
     // encrypt
     unsigned char* key = (unsigned char*)"tmpKey";
@@ -73,8 +73,6 @@ int main()
     printf("Decrypted text : %s\n", sInOutStruct.Buffer);
 
 
-
-
     printf("---Using SystemFunction025---\n");
     unsigned char s25Inputtext[] = "abcdefghijklmnop";
     printf("Input text : %s\n", (char*)s25Inputtext);
@@ -89,6 +87,29 @@ int main()
         printf("%02hhX", s25Outputtext[i]);
     }
     printf("\n");
+
+
+    printf("---MD5 Hash---\n");
+
+    CustomHashService^ hs = gcnew CustomHashService();
+    MD5_CTX md5ctx;
+    hs->MD5Init(&md5ctx);
+    unsigned char* hinput = (unsigned char*)"Hellohashworld";
+    size_t hinputSize = sizeof(char) * strlen((char*)hinput);
+    hs->MD5Update(&md5ctx, hinput, hinputSize);
+
+    unsigned char* hinput2 = (unsigned char*)"nextworld";
+    size_t hinput2Size = sizeof(char) * strlen((char*)hinput2);
+    hs->MD5Update(&md5ctx, hinput2, hinput2Size);
+
+    hs->MD5Final(&md5ctx);
+
+    printf("MD5 digest : ");
+    for (size_t i = 0; i < 16; i++) {
+        printf("%02hhX", md5ctx.digest[i]);
+    }
+    printf("\n");
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -130,9 +130,11 @@
   <ItemGroup>
     <ClCompile Include="CryptSample.cpp" />
     <ClCompile Include="CustomCryptoService.cpp" />
+    <ClCompile Include="CustomHashService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CustomCryptoService.h" />
+    <ClInclude Include="CustomHashService.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
